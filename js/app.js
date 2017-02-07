@@ -13,6 +13,53 @@ $(document).ready(function() {
 
         calcString += numba;
         temp += numba;
+        console.log(parseInt(temp));
+        updateScreen();
+    });
+
+    $('#clear').click(function(e) {
+        e.preventDefault();
+        calcString = "";
+        runningTotal = 0;
+        temp = "";
+        updateScreen();
+    });
+
+    $('#add').click(function(e) {
+        e.preventDefault();
+        temp = "";
+        calcString += " + ";
+        runningTotal += parseInt(temp)
+        updateScreen();
+    });
+
+    $('#subtract').click(function(e) {
+        e.preventDefault();
+        temp = "";
+        calcString += " - ";
+        runningTotal -= parseInt(temp)
+        updateScreen();
+    });
+
+    $('#multiply').click(function(e) {
+        e.preventDefault();
+        temp = "";
+        calcString += " * ";
+        runningTotal *= parseInt(temp)
+        updateScreen();
+    });
+
+    $('#divide').click(function(e) {
+        e.preventDefault();
+        temp = "";
+        calcString += " / ";
+        runningTotal /= parseInt(temp)
+        updateScreen();
+    });
+
+    $('#enter').click(function(e) {
+        e.preventDefault();
+        console.log(runningTotal);
         updateScreen();
     });
 });
