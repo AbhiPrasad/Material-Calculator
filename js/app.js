@@ -8,52 +8,46 @@ $(document).ready(function() {
 
     $('.num').click(function(e) {
         e.preventDefault();
+        nanCheck();
         calcString += event.target.id;;
         updateScreen();
     });
 
     $('#clear').click(function(e) {
         e.preventDefault();
+        nanCheck();
         calcString = "";
         updateScreen();
     });
 
     $('#add').click(function(e) {
         e.preventDefault();
-        var lastl = calcString.slice(-1);
-        if (operators.indexOf(lastl) > -1) {
-            calcString = calcString.slice(0, -1);
-        }
+        nanCheck();
+        checkOperator();
         calcString += operators[0];
         updateScreen();
     });
 
     $('#subtract').click(function(e) {
         e.preventDefault();
-        var lastl = calcString.slice(-1);
-        if (operators.indexOf(lastl) > -1) {
-            calcString = calcString.slice(0, -1);
-        }
+        nanCheck();
+        checkOperator();
         calcString += operators[1];
         updateScreen();
     });
 
     $('#multiply').click(function(e) {
         e.preventDefault();
-        var lastl = calcString.slice(-1);
-        if (operators.indexOf(lastl) > -1) {
-            calcString = calcString.slice(0, -1);
-        }
+        nanCheck();
+        checkOperator();
         calcString += operators[2];
         updateScreen();
     });
 
     $('#divide').click(function(e) {
         e.preventDefault();
-        var lastl = calcString.slice(-1);
-        if (operators.indexOf(lastl) > -1) {
-            calcString = calcString.slice(0, -1);
-        }
+        nanCheck();
+        checkOperator();
         calcString += operators[3];
         updateScreen();
     });
@@ -80,5 +74,19 @@ $(document).ready(function() {
 });
 
 function updateScreen() {
+    console.log(calcString);
     $('#screen').text(calcString);
+}
+
+function checkOperator() {
+    var lastl = calcString.slice(-1);
+    if (operators.indexOf(lastl) > -1) {
+        calcString = calcString.slice(0, -1);
+    }
+}
+
+function nanCheck() {
+    if (calcString === "NaN" || calcString === NaN || calcString === null) {
+        calcString = "";
+    }
 }
