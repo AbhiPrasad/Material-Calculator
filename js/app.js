@@ -20,31 +20,55 @@ $(document).ready(function() {
 
     $('#add').click(function(e) {
         e.preventDefault();
+        var lastl = calcString.slice(-1);
+        if (operators.indexOf(lastl) > -1) {
+            calcString = calcString.slice(0, -1);
+        }
         calcString += operators[0];
         updateScreen();
     });
 
     $('#subtract').click(function(e) {
         e.preventDefault();
+        var lastl = calcString.slice(-1);
+        if (operators.indexOf(lastl) > -1) {
+            calcString = calcString.slice(0, -1);
+        }
         calcString += operators[1];
         updateScreen();
     });
 
     $('#multiply').click(function(e) {
         e.preventDefault();
+        var lastl = calcString.slice(-1);
+        if (operators.indexOf(lastl) > -1) {
+            calcString = calcString.slice(0, -1);
+        }
         calcString += operators[2];
         updateScreen();
     });
 
     $('#divide').click(function(e) {
         e.preventDefault();
+        var lastl = calcString.slice(-1);
+        if (operators.indexOf(lastl) > -1) {
+            calcString = calcString.slice(0, -1);
+        }
         calcString += operators[3];
         updateScreen();
     });
 
     $('#enter').click(function(e) {
         e.preventDefault();
-        var eq = calcString.replace(/x/g, "*").replace(/÷/g, "/");
+        var eq = calcString;
+
+        var lastl = eq.slice(-1);
+
+        if (operators.indexOf(lastl) > -1) {
+            eq = eq.slice(0, -1);
+        }
+
+        eq = eq.replace(/x/g, "*").replace(/÷/g, "/");
 
         var ans = eval(eq);
 
