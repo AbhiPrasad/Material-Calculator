@@ -44,13 +44,17 @@ $(document).ready(function() {
 
     $('#enter').click(function(e) {
         e.preventDefault();
-        calculate();
+        var eq = calcString.replace(/x/g, "*").replace(/÷/g, "/");
+
+        var ans = eval(eq);
+
+        console.log(ans);
+
+        calcString = ans.toString();
+        updateScreen();
     });
 });
 
 function updateScreen() {
-    if (temp1 != "" && temp2 === "") {
-        calcString = "";
-    }
     $('#screen').text(calcString);
 }
